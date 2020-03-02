@@ -16,8 +16,9 @@ nulls = dataset.isnull().sum()
 print(nulls)
 print(dataset)
 
-x = dataset.iloc[:, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]
-y = dataset.iloc[:, -1]
+
+x = dataset.iloc[:, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17]]
+y = dataset.iloc[:, 12]
 # Elbow
 wcss = []
 for i in range(1, 10):
@@ -62,7 +63,7 @@ scaler = StandardScaler()
 # Fit on training set only.
 scaler.fit(x)
 x_scaler = scaler.transform(x)
-pca = PCA(2)
+pca = PCA(12)
 x_pca = pca.fit_transform(x_scaler)
 df2 = pd.DataFrame(data=x_pca)
 finaldf = pd.concat([df2, dataset[['TENURE']]], axis=1)
